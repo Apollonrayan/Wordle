@@ -14,7 +14,9 @@
 
 
 body {
-  background-color: hsl(240, 3%, 7%);
+  
+  background: rgb(2,0,36);
+  background: linear-gradient(152deg, rgb(1, 0, 8) 0%, rgb(54, 54, 54) 100%); 
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -242,7 +244,7 @@ body {
   letter-spacing: 2px;
   font-style: oblique;
 }
-.credits a{
+.credits a,p{
   text-decoration: none;
-  color: #333;
+  color: #555;
 }
