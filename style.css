@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Poppins&display=swap');
+:root{
+  --yellow:hsl(49.1, 100%, 51.4%);
+  --green:hsl(115.3, 87.1%, 48.6%);
+  --grey:hsl(240, 2%, 23%);
+}
 *,
 *::after,
 *::before {
@@ -14,6 +20,29 @@ body {
   margin: 0;
   padding: 1em;
   font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
+  overflow: hidden;
+}
+.title{
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.title p,span{
+  font-family: 'Macondo', cursive;
+  font-size: 3rem;
+  margin: 2px;
+}
+.title p span.green{
+    color:var(--green);
+}
+.title p span.yellow{
+    color:var(--yellow);
+}
+.title p span.grey{
+  color:var(--grey);
 }
 
 .keyboard {
@@ -200,4 +229,16 @@ body {
   100%{
     transform: translateY(0%);
   }
+}
+.credits{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-right: 2rem;
+  letter-spacing: 2px;
+  font-style: oblique;
+}
+.credits a{
+  text-decoration: none;
+  color: #333;
 }
