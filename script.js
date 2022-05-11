@@ -9998,7 +9998,6 @@ const dictionary = [
     "slang",
     "henry"
 ]
-
 const guessGrid = document.querySelector("[data-guess-grid]")
 const alertContainer = document.querySelector("[data-alert-container]")
 const keyboard = document.querySelector("[data-keyboard]")
@@ -10008,7 +10007,6 @@ const WORD_LENGTH = 5
 const offsetFromDate = new Date(2022, 0, 23)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
-
 const targetWord = targetWords[Math.floor(dayOffset)]
 console.log(targetWord)
 
