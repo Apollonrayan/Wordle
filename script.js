@@ -10004,7 +10004,7 @@ const keyboard = document.querySelector("[data-keyboard]")
 const FLIP_ANIMATION_DURATION = 500
 const DANCE_ANIMATION_DURATION= 500
 const WORD_LENGTH = 5
-const offsetFromDate = new Date(2022, 0, 23)
+const offsetFromDate = new Date(2022, 0, 30)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(dayOffset)]
@@ -10260,15 +10260,20 @@ function danceTiles(tiles) {
     })
 }
 function checkWinLose(guess, tiles) {
+    const usedRows = guessGrid.querySelectorAll("[data-letter]").length / WORD_LENGTH
+    const remainingRows = guessGrid.querySelectorAll(":not([data-letter])").length / WORD_LENGTH
+
     if (guess === targetWord) {
+        const compliments = ["En 1 coup ??? Incroyable ✨🥶", "Wow ! en 2 essais, bravo 🙌", "Magnifique !", "Superbe !🔥", "Bravo !🤩", "Bien joué ! c'était votre dernière chance 😅"]
+        showAlert3(compliments[usedRows - 1], 5000)
         showAlert3("Bravo vous avez gagner !", 5000)
         danceTiles(tiles)
         stopInteraction()
     }
-    const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
-    console.log(remainingTiles)
-    if (remainingTiles.length === 0){
-        showAlert2("Le mot etait ",targetWord.toUpperCase(),null)
+
+    if (remainingRows === 0){
+        showAlert2(targetWord.toUpperCase(),10000)
+        showAlert2("Dommage le mot était ",10000)
         stopInteraction()
         
     }
