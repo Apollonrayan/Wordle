@@ -10005,7 +10005,7 @@ const keyboard = document.querySelector("[data-keyboard]")
 const FLIP_ANIMATION_DURATION = 500
 const DANCE_ANIMATION_DURATION= 500
 const WORD_LENGTH = 5
-const offsetFromDate = new Date(2022, 0, 24)
+const offsetFromDate = new Date(2022, 0, 23)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
 
@@ -10024,15 +10024,15 @@ function stopInteraction() {
 }
 
 function handleMouseClick(e) {
-    if (e.target.matches("data-key")) {
+    if (e.target.matches("[data-key]")) {
         pressKey(e.target.dataset.key)
         return
     }
-    if (e.target.matches("data-enter")) {
+    if (e.target.matches("[data-enter]")) {
         submitGuess()
         return
     }
-    if (e.target.matches("data-delete")) {
+    if (e.target.matches("[data-delete]")) {
         deleteKey()
         return
     }
@@ -10087,45 +10087,109 @@ function submitGuess() {
         return
     }
     stopInteraction()
-    activeTiles.forEach((...params) => flipTile(...params, guess))
+  
+	// My algorithm for determining classname of the letter
+	let matchingChars = ''
+	const classDictionary = { 1: '', 2: '', 3: '', 4: '', 5: '' }
+
+	for (let i = 0; i < targetWord.length; i++) {
+		const letter = guess[i]
+
+		console.log(matchingChars)
+
+		const rgx = new RegExp(`${letter}`, 'g')
+		// Need to know the total appearances of the letter in the word
+		const totalAppearances = (targetWord.match(rgx) || []).length
+		// Also need to know all prior appearances of the letter in the word,
+		//  so we don't mistakenly tell the user that a duplicate letter exists
+		const priorAppearances = (matchingChars.match(rgx) || []).length
+
+		// Letter not in word
+		if (!targetWord.includes(letter)) {
+			classDictionary[i + 1] = 'wrong'
+			continue
+		}
+
+		// The letter is correct
+		if (targetWord[i] === guess[i]) {
+			classDictionary[i + 1] = 'correct'
+
+			matchingChars = matchingChars + letter
+			continue
+		}
+
+		// The letter is included in the word somewhere...
+
+		// Look ahead... If there is a correct appearance further in the word, we need to know
+		let futureCorrectAppearances = 0
+		for (let j = i; j < targetWord.length; j++) {
+			if (targetWord[j] === guess[j] && targetWord[j] === letter)
+				futureCorrectAppearances++
+		}
+
+		console.log(
+			`There are already ${futureCorrectAppearances} correct ahead of [${i}]: "${letter}"`
+		)
+		console.log(
+			`There are already ${priorAppearances} which come before [${i}]: "${letter}"`
+		)
+
+		console.log(futureCorrectAppearances, priorAppearances, totalAppearances)
+
+		// If there are already too many future / prior / future+prior appearances,
+		//  there can not be another instance of this letter, so we must continue
+		if (futureCorrectAppearances >= totalAppearances) {
+			classDictionary[i + 1] = 'wrong'
+			continue
+		}
+		if (priorAppearances >= totalAppearances) {
+			classDictionary[i + 1] = 'wrong'
+			continue
+		}
+		if (priorAppearances + futureCorrectAppearances >= totalAppearances) {
+			classDictionary[i + 1] = 'wrong'
+			continue
+		}
+
+		classDictionary[i + 1] = 'wrong-location'
+
+		matchingChars = matchingChars + letter
+	}
+
+	activeTiles.forEach((value, index, array) => {
+		flipTile(value, index, array, guess, classDictionary[index + 1])
+	})
 }
-function flipTile(tile, index, array, guess) {
-    const letter = tile.dataset.letter
-    const key = keyboard.querySelector(`[data-key="${letter}"i]`)
-    setTimeout(() => {
-        tile.classList.add("flip")
-    }, (index * FLIP_ANIMATION_DURATION) / 2)
 
-    tile.addEventListener(
-        "transitionend",
-        () => {
-            tile.classList.remove("flip")
-            if (targetWord[index] === letter) {
-                tile.dataset.state = "correct"
-                key.classList.add("correct")
-            } else if (targetWord.includes(letter)) {
-                tile.dataset.state = "wrong-location"
-                key.classList.add("wrong-location")
-            } else {
-                tile.dataset.state = "wrong"
-                key.classList.add("wrong")
-            }
+function flipTile(tile, index, array, guess, className) {
+	const letter = tile.dataset.letter
+	const key = keyboard.querySelector(`[data-key="${letter}"i]`)
+	setTimeout(() => {
+		tile.classList.add('flip')
+	}, (index * FLIP_ANIMATION_DURATION) / 2)
 
-            if (index === array.length - 1) {
-                tile.addEventListener(
-                    "transitionend",
-                    () => {
-                        startInteraction()
-                        checkWinLose(guess, array)
-                    },
-                    { once: true }
-                )
-            }
-        },
-        { once: true }
-    )
+	tile.addEventListener(
+		'transitionend',
+		() => {
+			tile.classList.remove('flip')
+
+			tile.dataset.state = className
+			key.classList.add(className)
+
+			if (index === array.length - 1) {
+				tile.addEventListener(
+					'transitionend',
+					() => {
+						startInteraction()
+						checkWinLose(guess, array)
+					},
+					{ once: true }
+				)
+			}
+		},
+		{ once: true }
+	)
 }
-
 function getActiveTiles() {
     return guessGrid.querySelectorAll('[data-state="active"]')
 }

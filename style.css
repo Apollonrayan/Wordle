@@ -34,6 +34,7 @@ body {
   font-family: 'Macondo', cursive;
   font-size: 3rem;
   margin: 2px;
+  margin-top: -15px;
 }
 .title p span.green{
     color:var(--green);
@@ -81,6 +82,7 @@ body {
 .key > .svg {
   width: 1.75em;
   height: 1.75em;
+  pointer-events: none;
 }
 
 .key:hover,
@@ -235,6 +237,7 @@ body {
   right: 0;
   bottom: 0;
   margin-right: 2rem;
+  margin-bottom: 1rem;
   letter-spacing: 2px;
   font-style: oblique;
 }
