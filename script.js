@@ -101,7 +101,6 @@ const targetWords = [
     "bruit",
     "vivre",
     "envie",
-    "louis",
     "image",
     "piece",
     "cesse",
@@ -4074,7 +4073,6 @@ const dictionary = [
     "bruit",
     "vivre",
     "envie",
-    "louis",
     "image",
     "piece",
     "cesse",
@@ -10004,7 +10002,7 @@ const keyboard = document.querySelector("[data-keyboard]")
 const FLIP_ANIMATION_DURATION = 500
 const DANCE_ANIMATION_DURATION= 500
 const WORD_LENGTH = 5
-const offsetFromDate = new Date(2022, 0, 30)
+const offsetFromDate = new Date(2022, 0, 14)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(dayOffset)]
