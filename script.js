@@ -8023,8 +8023,6 @@ function submitGuess() {
 	for (let i = 0; i < targetWord.length; i++) {
 		const letter = guess[i]
 
-		console.log(matchingChars)
-
 		const rgx = new RegExp(`${letter}`, 'g')
 		// Need to know the total appearances of the letter in the word
 		const totalAppearances = (targetWord.match(rgx) || []).length
@@ -8054,15 +8052,6 @@ function submitGuess() {
 			if (targetWord[j] === guess[j] && targetWord[j] === letter)
 				futureCorrectAppearances++
 		}
-
-		console.log(
-			`There are already ${futureCorrectAppearances} correct ahead of [${i}]: "${letter}"`
-		)
-		console.log(
-			`There are already ${priorAppearances} which come before [${i}]: "${letter}"`
-		)
-
-		console.log(futureCorrectAppearances, priorAppearances, totalAppearances)
 
 		// If there are already too many future / prior / future+prior appearances,
 		//  there can not be another instance of this letter, so we must continue
