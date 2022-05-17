@@ -8188,6 +8188,7 @@ function checkWinLose(guess, tiles) {
         showAlert3("Bravo vous avez gagner !", 5000)
         danceTiles(tiles)
         stopInteraction()
+        return
     }
     if (remainingTiles.length === 0){
         showAlert2(targetWord.toUpperCase(),10000)
