@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Macondo&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Sans:ital,wght@1,300&family=Macondo&family=Poppins&display=swap');
 :root{
   --yellow:hsl(49.1, 100%, 51.4%);
   --green:hsl(115.3, 87.1%, 48.6%);
@@ -34,18 +34,22 @@ body {
   align-items:center;
 }
 .title p,span{
-  font-family: 'Macondo', cursive;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 3rem;
   margin: 2px;
   margin-top: -15px;
 }
 .title p span.green{
+    font-weight: bold;
     color:var(--green);
+
 }
 .title p span.yellow{
-    color:var(--yellow);
+  font-weight: bold;
+  color:var(--yellow);
 }
 .title p span.grey{
+  font-weight: bold;
   color:var(--grey);
 }
 .title p span.rayan{
