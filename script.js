@@ -582,7 +582,6 @@ const targetWords = [
     "isole",
     "raide",
     "grade",
-    "forts",
     "juges",
     "plate",
     "marge",
@@ -8246,6 +8245,7 @@ function danceTiles(tiles) {
 }
 function checkWinLose(guess, tiles) {
     const usedRows = guessGrid.querySelectorAll("[data-letter]").length / WORD_LENGTH
+    const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
 
     if (guess === targetWord) {
         const compliments = ["En 1 coup ??? Incroyable ✨🥶", "Wow ! en 2 essais, bravo 🙌", "Magnifique !✨", "Superbe !🔥", "Bravo !🤩", "Bien joué ! c'était votre dernière chance 😅"]
@@ -8254,11 +8254,9 @@ function checkWinLose(guess, tiles) {
         danceTiles(tiles)
         stopInteraction()
     }
-    const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
-    if (remainingTiles === 0){
+    if (remainingTiles.length === 0){
         showAlert2(targetWord.toUpperCase(),10000)
         showAlert2("Dommage le mot était ",10000)
         stopInteraction()
-        
     }
 }
