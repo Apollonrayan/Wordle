@@ -256,3 +256,17 @@ body {
   text-decoration: none;
   color: #555;
 }
+@media screen and (max-width: 1030px) {
+  .credits{
+    display: none;
+  }
+}
+@media screen and (max-width: 387px){
+  .title{
+    margin-top: 3rem;
+  }
+  .title p span.rayan,.by{
+    display: none;
+  }
+  
+}
