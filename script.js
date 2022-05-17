@@ -8033,7 +8033,7 @@ const WORD_LENGTH = 5
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
-const targetWord = targetWords[1996]
+const targetWord = targetWords[getRandomInt(1996)]
 console.log(targetWord);
 
 startInteraction()
