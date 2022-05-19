@@ -8002,7 +8002,10 @@ function submitGuess() {
     const activeTiles = [...getActiveTiles()]
     if (activeTiles.length !== WORD_LENGTH) {
         showAlert("Mot trop court !")
-        shakeTiles(activeTiles)
+        setTimeout(() => {
+            shakeTiles(activeTiles)
+        },1000 )
+        soundEffectShort()
         return
     }
     const guess = activeTiles.reduce((word, tile) => {
@@ -8085,7 +8088,7 @@ function flipTile(tile, index, array, guess, className) {
 		tile.classList.add('flip')
 	}, (index * FLIP_ANIMATION_DURATION) / 2)
     if (guess === targetWord){
-        soundEffect()
+        soundEffectWin()
     }
 	tile.addEventListener(
 		'transitionend',
@@ -8180,17 +8183,24 @@ function danceTiles(tiles) {
         }, index * DANCE_ANIMATION_DURATION / 5)
     })
 }
-function soundEffect(){
-    document.getElementById('myAudio').play();
+function soundEffectWin(){
+    var vid = document.getElementById("audioWin");
+    vid.volume=0.3;
+    vid.play();
+}
+function soundEffectShort(){
+    var vid = document.getElementById("audioTooShort");
+    vid.volume=0.5;
+    vid.play();
 }
 function checkWinLose(guess, tiles) {
     const usedRows = guessGrid.querySelectorAll("[data-letter]").length / WORD_LENGTH
     const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
 
     if (guess === targetWord) {
-        const compliments = ["En 1 coup ??? Incroyable ✨🥶", "Wow ! en 2 essais, bravo 🙌", "Magnifique !✨", "Superbe !🔥", "Bravo !🤩", "Bien joué ! c'était votre dernière chance 😅"]&
+        const compliments = ["En 1 coup ??? Incroyable ✨🥶", "Wow ! en 2 essais, bravo 🙌", "Magnifique !✨", "Superbe !🔥", "Bravo !🤩", "Bien joué ! c'était votre dernière chance 😅"]
         showAlert3(compliments[usedRows - 1], 5000)
-        showAlert3("Bravo vous avez gagné !", 5000)
+        showAlert3("Bravo vous avez gagner !", 5000)
         danceTiles(tiles)
         stopInteraction()
         return
