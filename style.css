@@ -14,9 +14,10 @@
 
 
 body {
-  
-  background: rgb(2,0,36);
-  background: linear-gradient(152deg, rgb(1, 0, 8) 0%, rgb(54, 54, 54) 100%); 
+  background: rgb(26, 188, 156);
+	background: -moz-linear-gradient(-45deg, rgba(26, 188, 156, 1) 0%, rgba(142, 68, 173, 1) 100%);
+	background: -webkit-linear-gradient(-45deg, rgba(26, 188, 156, 1) 0%, rgba(142, 68, 173, 1) 100%);
+	background: linear-gradient(135deg, rgba(26, 188, 156, 1) 0%, rgba(142, 68, 173, 1) 100%);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -55,6 +56,9 @@ body {
 .title p span.rayan{
   color:var(--white);
   font-family: 'Dancing Script', cursive;
+}
+.title p span.by{
+  color: #fff;
 }
 
 .keyboard {
@@ -254,7 +258,7 @@ body {
 }
 .credits a,p{
   text-decoration: none;
-  color: #555;
+  color:rgb(163, 78, 199);
 }
 @media screen and (max-width: 1030px) {
   .credits{
