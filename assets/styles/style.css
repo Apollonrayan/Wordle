@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Sans:ital,wght@1,300&family=Macondo&family=Poppins&display=swap');
 :root{
   --yellow:hsl(49.1, 100%, 51.4%);
-  --green:hsl(115.3, 87.1%, 48.6%);
+  --green:hsl(115, 87%, 49%);
   --grey:hsl(240, 2%, 23%);
-  --white:#fff;
+  --white:hsl(0, 0%, 100%);
+  --red:hsl(348, 76%, 42%);
 }
 *,
 *::after,
@@ -54,8 +55,9 @@ body {
   color:var(--grey);
 }
 .title p span.rayan{
-  color:var(--white);
+  color:var(--red);
   font-family: 'Dancing Script', cursive;
+  font-weight: 4rem;
 }
 .title p span.by{
   color: #fff;

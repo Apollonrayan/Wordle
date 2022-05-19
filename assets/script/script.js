@@ -8000,10 +8000,8 @@ function deleteKey() {
 function submitGuess() {
     const activeTiles = [...getActiveTiles()]
     if (activeTiles.length !== WORD_LENGTH) {
-        setTimeout(() => {
-            shakeTiles(activeTiles)
-            showAlert("Mot trop court !")
-        },1000 )
+        shakeTiles(activeTiles)
+        showAlert("Mot trop court !")
         soundEffectShort()
         return
     }
@@ -8011,10 +8009,8 @@ function submitGuess() {
         return word + tile.dataset.letter
     }, "")
     if (!dictionary.includes(guess)) {
-        setTimeout(() => {
-            shakeTiles(activeTiles)
-            showAlert2("Ce mot n'est pas dans la liste !")
-        },1000 )
+        shakeTiles(activeTiles)
+        showAlert2("Ce mot n'est pas dans la liste !")
         soundEffectShort()
         return
     }
