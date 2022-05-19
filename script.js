@@ -8161,8 +8161,6 @@ function showAlert3(message, duration = 1000) {
             alert.remove()
         })
     }, duration)
-
-
 }
 function shakeTiles(tiles) {
     tiles.forEach(tile => {
