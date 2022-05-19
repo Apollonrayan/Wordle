@@ -730,7 +730,6 @@ const targetWords = [
     "jetee",
     "outil",
     "suffi",
-    "serge",
     "logis",
     "joies",
     "filer",
@@ -8181,15 +8180,20 @@ function danceTiles(tiles) {
         }, index * DANCE_ANIMATION_DURATION / 5)
     })
 }
+function soundEffectLose(){
+    var vid = document.getElementById("audioLose")
+    vid.volume=0.4
+    vid.play()
+}
 function soundEffectWin(){
-    var vid = document.getElementById("audioWin");
-    vid.volume=0.3;
-    vid.play();
+    var vid = document.getElementById("audioWin")
+    vid.volume=0.3
+    vid.play()
 }
 function soundEffectShort(){
-    var vid = document.getElementById("audioTooShort");
-    vid.volume=0.5;
-    vid.play();
+    var vid = document.getElementById("audioTooShort")
+    vid.volume=0.5
+    vid.play()
 }
 function checkWinLose(guess, tiles) {
     const usedRows = guessGrid.querySelectorAll("[data-letter]").length / WORD_LENGTH
@@ -8204,6 +8208,7 @@ function checkWinLose(guess, tiles) {
         return
     }
     if (remainingTiles.length === 0){
+        soundEffectLose()
         showAlert2(targetWord.toUpperCase(),10000)
         showAlert2("Dommage le mot était ",10000)
         stopInteraction()
