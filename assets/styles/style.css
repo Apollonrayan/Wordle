@@ -258,15 +258,7 @@ body {
   letter-spacing: 2px;
   font-style: oblique;
 }
-.credits a,p{
-  text-decoration: none;
-  color:rgb(163, 78, 199);
-}
-@media screen and (max-width: 1030px) {
-  .credits{
-    display: none;
-  }
-}
+
 @media screen and (max-width: 392px){
   .title{
     margin-top: 3rem;
