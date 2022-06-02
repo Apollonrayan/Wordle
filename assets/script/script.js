@@ -7933,9 +7933,47 @@ const keyboard = document.querySelector("[data-keyboard]")
 const FLIP_ANIMATION_DURATION = 500
 const DANCE_ANIMATION_DURATION= 500
 const WORD_LENGTH = 5
+const openModalButtons = document.querySelectorAll('[data-modal-target]')
+const closeModalButtons = document.querySelectorAll('[data-close-button]')
+
+
+// DEBUT EXPLICATION JEU
+openModalButtons.forEach(button => {
+button.addEventListener('click', () => {
+    const modal = document.querySelector(button.dataset.modalTarget)
+    openModal(modal)
+})
+})
+
+overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal => {
+        closeModal(modal)
+})
+})
+
+closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = button.closest('.modal')
+        closeModal(modal)
+})
+})
+
+function openModal(modal) {
+    if (modal == null) return
+        modal.classList.add('active')
+        overlay.classList.add('active')
+}
+function closeModal(modal) {
+    if (modal == null) return
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+}
+// FIN EXPLICATION
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
-  }
+}
 const targetWord = targetWords[getRandomInt(1900)]
 console.log(targetWord);
 
@@ -8015,7 +8053,7 @@ function submitGuess() {
         return
     }
     stopInteraction()
-  
+
 	// My algorithm for determining classname of the letter
 	let matchingChars = ''
 	const classDictionary = { 1: '', 2: '', 3: '', 4: '', 5: '' }

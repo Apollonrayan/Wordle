@@ -5,6 +5,7 @@
   --grey:hsl(240, 2%, 23%);
   --white:hsl(0, 0%, 100%);
   --red:hsl(348, 76%, 42%);
+  --black:hsl(0, 0%, 0%);
 }
 *,
 *::after,
@@ -15,18 +16,124 @@
 
 
 body {
-  background: rgb(26, 188, 156);
-	background: -moz-linear-gradient(-45deg, rgba(26, 188, 156, 1) 0%, rgba(142, 68, 173, 1) 100%);
-	background: -webkit-linear-gradient(-45deg, rgba(26, 188, 156, 1) 0%, rgba(142, 68, 173, 1) 100%);
-	background: linear-gradient(135deg, rgba(26, 188, 156, 1) 0%, rgba(142, 68, 173, 1) 100%);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  background: rgb(50,50,50);
+  background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(0,0,0,1) 100%);
   margin: 0;
   padding: 1em;
   font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
   overflow: hidden;
 }
+
+/* MENU EXPLICATION */
+.button{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  gap:10px;
+}
+.button .aide button{
+  color: white;
+  background-color: #444;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  
+}
+.button .aide button::before{
+  content: "Aide";
+}
+
+.modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  transition: 200ms ease-in-out;
+  border:1px solid var(--black) ;
+  border-radius: 10px;
+  z-index: 1000;
+  background-color: var(--white);
+  width: 550px;
+  max-width: 80%;
+  height: 600px;
+}
+.modal.active{
+  transform: translate(-50%,-50%) scale(1);
+}
+.modal-header{
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:1px solid var(--black);
+}
+.modal-header .modal-title{
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.modal-header .close-button{
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: 1.25rem;
+
+}
+.modal-body{
+  padding: 10px 15px;
+  font-size:1rem ;
+}
+.modal-body .intro p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-body p#f5{
+  font-weight: bold;
+  color: red;
+}
+.modal-body #explication div{
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+}
+.modal-body #explication div#vert{
+  padding-top: 0;
+}
+.modal-body #explication div p{
+  margin-left: 1rem;
+}
+.modal-body #explication div p span{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+#overlay{
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out; 
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:rgba(0,0,0,0.5);
+  z-index: 50;
+  pointer-events: none;
+}
+#overlay.active{
+  pointer-events: all;
+  opacity: 1;
+}
+
+/* FIN MENU EXPLICATION  */
+
 .title{
   padding: 0;
   margin: 0;
@@ -249,22 +356,31 @@ body {
     transform: translateY(0%);
   }
 }
-.credits{
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin-right: 2rem;
-  margin-bottom: 1rem;
-  letter-spacing: 2px;
-  font-style: oblique;
-}
 
-@media screen and (max-width: 392px){
+@media screen and (max-width: 400px){
   .title{
     margin-top: 3rem;
   }
   .title p span.rayan,.by{
     display: none;
   }
-  
+  .button .aide button:before{
+    content:"?";
+  }
+  .button .aide button{
+    content:none;
+  }
+  img{
+    width: 50px;
+  }
+  #example{
+    width: 100%;
+  }
+  .modal{
+    height: 90%;
+  }
+  #f5,.intro{
+    font-size: 0.75rem;
+  }
+
 }

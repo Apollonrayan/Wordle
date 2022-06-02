@@ -1,18 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/styles/style.css">
+    <script src="https://kit.fontawesome.com/fb20b4c1c6.js" crossorigin="anonymous"></script>
     <title>Wordle</title>
 </head>
+
 <body>
     <!-- Huge thanks to WebDevSimplified https://www.youtube.com/c/WebDevSimplified -->
-    <div class="alert-container" data-alert-container>
-        
+    <div class="alert-container" data-alert-container></div>
+    <div class="button">
+        <div class="aide">
+            <button data-modal-target="#modal"></button>
+        </div>
+        </div>
     </div>
-    <div class="title"><p><span class="grey">W</span><span class="green">o</span><span class="grey">r</span><span class="yellow">d</span><span class="grey">l</span><span class="green">e</span> <span class="by">by</span> <span class="rayan">Rayan</span></p>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="modal-title">Explication Wordle</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="intro">
+            <p>Vous avez 6 essais pour trouver le mot.</p>
+            <p>À chaque essais, chaque case prend une couleur.Exemple :</p>
+            </div>
+            <img src="/assets/styles/images/word.png" alt="Mot" id="example"/>
+            <div id="explication">
+                    <div>
+                    <img src="/assets/styles/images/grey.png" alt="Lettre grise">
+                    <p>Lorsque la lettre est grise, la lettre <span>n'est pas dans le mot.</span></p>
+                    </div>
+                    <div>
+                    <img src="/assets/styles/images/yellow.png" alt="Lettre jaune">
+                    <p>Lorsque la lettre est jaune, la lettre <span>est dans le mot mais mal placé.</span></p>
+                    </div>
+                    <div>
+                    <img src="/assets/styles/images/vert.png" alt="Lettre verte" id="vert">
+                    <p>Lorsque la lettre est verte, la lettre <span>est bien placé.</span></p>
+                    </div>
+            </div>
+            <p id="f5">Un nouveau mot est donné à chaque rafraichissement de la page.</p>
+
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div class="title">
+        <p><span class="grey">W</span><span class="green">o</span><span class="grey">r</span><span
+                class="yellow">d</span><span class="grey">l</span><span class="green">e</span> <span
+                class="by">by</span> <span class="rayan">Rayan</span></p>
     </div>
     <div data-guess-grid class="guess-grid">
         <div class="tile"></div>
@@ -76,13 +117,17 @@
         <button class="key" data-key="B">B</button>
         <button class="key" data-key="N">N</button>
         <button class="key" data-key="M">M</button>
-        <button data-delete class="key large"> <svg data-delete xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-            <path data-delete fill="var(--color-tone-1)" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
-          </svg>    </button>
+        <button data-delete class="key large"> <svg data-delete xmlns="http://www.w3.org/2000/svg" height="24"
+                viewBox="0 0 24 24" width="24">
+                <path data-delete fill="var(--color-tone-1)"
+                    d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z">
+                </path>
+            </svg> </button>
     </div>
     <script src="/assets/script/script.js"></script>
     <audio id="audioWin" src="assets/sounds/Motus.mp4"></audio>
     <audio id="audioTooShort" src="assets/sounds/tooShort.mp4"></audio>
     <audio id="audioLose" src="assets/sounds/soundLose.mp3"></audio>
 </body>
+
 </html>
