@@ -142,6 +142,11 @@ body {
   justify-content: center;
   align-items:center;
 }
+.img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .title p,span{
   font-family: 'Josefin Sans', sans-serif;
   font-size: 3rem;
@@ -357,12 +362,25 @@ body {
   }
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 667px){
+
+  .img #example{
+    width: 60vw;
+  }
+}
+
+
+
+@media screen and (max-width: 410px){
   .title{
     margin-top: 3rem;
   }
   .title p span.rayan,.by{
     display: none;
+  }
+  .button{
+  bottom: 0;
+  right: 0;
   }
   .button .aide button:before{
     content:"?";
@@ -382,5 +400,14 @@ body {
   #f5,.intro{
     font-size: 0.75rem;
   }
+  #f5{
+    color: green;
+  }
 
+}
+@media screen and (min-height: 600px)  and (max-width:500px){
+  .keyboard{
+    gap:0.4rem;
+    margin-top: 3.5rem;
+  }
 }

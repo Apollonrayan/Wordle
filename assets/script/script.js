@@ -7939,7 +7939,7 @@ const closeModalButtons = document.querySelectorAll('[data-close-button]')
 
 // DEBUT EXPLICATION JEU
 openModalButtons.forEach(button => {
-button.addEventListener('click', () => {
+    button.addEventListener('click', () => {
     const modal = document.querySelector(button.dataset.modalTarget)
     openModal(modal)
 })
@@ -8231,11 +8231,21 @@ function soundEffectShort(){
     vid.volume=0.5
     vid.play()
 }
-function checkWinLose(guess, tiles) {
-    const usedRows = guessGrid.querySelectorAll("[data-letter]").length / WORD_LENGTH
-    const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
+function soundEffectWinInOne(){
+    var vid = document.getElementById("audioWinInOne")
+    vid.volume=1
+    vid.play()
+}
 
+function checkWinLose(guess, tiles) {
+    const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")  
+    const usedRows = guessGrid.querySelectorAll("[data-letter]").length / WORD_LENGTH
+    
     if (guess === targetWord) {
+        if(usedRows === 1){
+            soundEffectWinInOne()
+            return
+        }
         const compliments = ["En 1 coup ??? Incroyable ✨🥶", "Wow ! en 2 essais, bravo 🙌", "Magnifique !✨", "Superbe !🔥", "Bravo !🤩", "Bien joué ! c'était votre dernière chance 😅"]
         showAlert3(compliments[usedRows - 1], 5000)
         showAlert3("Bravo vous avez gagner !", 5000)
