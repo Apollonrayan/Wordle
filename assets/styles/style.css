@@ -11,11 +11,11 @@
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 
 body {
+  font-family: Arial, Helvetica, sans-serif;
   background: rgb(50,50,50);
   background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(0,0,0,1) 100%);
   margin: 0;
@@ -28,11 +28,13 @@ body {
 .button{
   position: fixed;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
   margin: 20px;
   gap:10px;
 }
-.button .aide button{
+.button  button{
   color: white;
   background-color: #444;
   border: none;
@@ -41,7 +43,9 @@ body {
   font-weight: bold;
   cursor: pointer;
   border-radius: 3px;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .button .aide button::before{
   content: "Aide";
@@ -49,6 +53,8 @@ body {
 
 .modal{
   position: fixed;
+  width: fit-content;
+  height: fit-content;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%) scale(0);
@@ -57,9 +63,6 @@ body {
   border-radius: 10px;
   z-index: 1000;
   background-color: var(--white);
-  width: 550px;
-  max-width: 80%;
-  height: 600px;
 }
 .modal.active{
   transform: translate(-50%,-50%) scale(1);
@@ -87,7 +90,7 @@ body {
 }
 .modal-body{
   padding: 10px 15px;
-  font-size:1rem ;
+  font-size: 2.2vh; ;
 }
 .modal-body .intro p{
   display: flex;
@@ -108,6 +111,9 @@ body {
 }
 .modal-body #explication div p{
   margin-left: 1rem;
+}
+.modal-body #explication div img{
+  width:92px;
 }
 .modal-body #explication div p span{
   font-family: Arial, Helvetica, sans-serif;
@@ -184,6 +190,7 @@ body {
 }
 
 .key {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: inherit;
   grid-column: span 2;
   border: none;
@@ -369,8 +376,6 @@ body {
   }
 }
 
-
-
 @media screen and (max-width: 410px){
   .title{
     margin-top: 3rem;
@@ -405,9 +410,25 @@ body {
   }
 
 }
+@media screen and (max-width: 310px){
+  .modal{
+    max-width: 90%;
+  }
+  #explication p{
+    font-size: 5vw;
+  }
+  #explication p span{
+    font-size: 5vw;
+  }
+  
+
+}
 @media screen and (min-height: 600px)  and (max-width:500px){
   .keyboard{
     gap:0.4rem;
     margin-top: 3.5rem;
+  }
+  #explication div img{
+    width:50px;
   }
 }
