@@ -7942,7 +7942,12 @@ function getRandomInt(max) {
 }
 const targetWord = targetWords[getRandomInt(1900)]
 
-console.log(targetWord);
+console.log(targetWord)
+
+function disclaimerOff() {
+    var element = document.getElementsByClassName("disclaimer")[0];
+    element.classList.toggle("disclaimeroff");
+}
 
 // MUTE PAGE
 

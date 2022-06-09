@@ -432,3 +432,6 @@ body {
     width:50px;
   }
 }
+.disclaimeroff{
+  display: none;
+}
