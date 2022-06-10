@@ -7932,7 +7932,7 @@ const alertContainer = document.querySelector("[data-alert-container]")
 const keyboard = document.querySelector("[data-keyboard]")
 const FLIP_ANIMATION_DURATION = 500
 const DANCE_ANIMATION_DURATION= 500
-const WORD_LENGTH = 5
+const WORD_LENGTH = 6
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const muteLogo = document.getElementById('mutePage')
@@ -7957,10 +7957,12 @@ mutePages.addEventListener("click", () => {
         muteLogo.classList.remove('fa-volume-high')
         muteLogo.classList.add('fa-volume-xmark')
         mutePage()
+
     }else{
         muteLogo.classList.remove('fa-volume-xmark')
         muteLogo.classList.add('fa-volume-high')
         unmutePage()
+        
     }
 },false)
 
