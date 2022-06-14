@@ -50,7 +50,9 @@ body {
 .button .aide button::before{
   content: "Aide";
 }
-
+.button .reload a{
+  text-decoration: none;
+}
 .modal{
   position: fixed;
   width: fit-content;
