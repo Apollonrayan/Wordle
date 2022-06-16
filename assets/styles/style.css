@@ -145,7 +145,7 @@ body {
 /* FIN MENU EXPLICATION  */
 /*REJOUEZ */
 
-a .replay{
+.replay{
   position: fixed;
   left: 70%;
   top: 40%;
@@ -157,12 +157,12 @@ a .replay{
   border-radius: 3rem;
   transform: translate(-50%,-50%) scale(0);
 }
-a .replay{
+.replay{
   text-decoration: none;
   color: red;
   font-weight: bolder;
 }
-a .replay.active{
+.replay.active{
   transform: translate(-50%,-50%) scale(1);
 }
 /*FIN REJOUEZ */
