@@ -8291,6 +8291,7 @@ function checkWinLose(guess, tiles) {
     const usedRows = guessGrid.querySelectorAll("[data-letter]").length / WORD_LENGTH
     
     if (guess === targetWord) {
+        document.getElementsByClassName('replay')[0].classList.toggle("active");
         if(usedRows === 1){
             soundEffectWinInOne()
             showAlert3("Le mot est bien " + targetWord.toUpperCase() +".",5000)
