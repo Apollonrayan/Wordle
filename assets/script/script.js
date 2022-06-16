@@ -689,7 +689,6 @@ const targetWords = [
     "solde",
     "azote",
     "battu",
-    "weber",
     "impot",
     "verse",
     "rural",

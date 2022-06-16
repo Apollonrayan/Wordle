@@ -144,7 +144,8 @@ body {
 }
 /* FIN MENU EXPLICATION  */
 /*REJOUEZ */
-.replay{
+
+a .replay{
   position: fixed;
   left: 70%;
   top: 40%;
@@ -152,16 +153,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 3rem;
   transform: translate(-50%,-50%) scale(0);
 }
-.replay a{
+a .replay{
   text-decoration: none;
   color: red;
   font-weight: bolder;
 }
-.replay.active{
+a .replay.active{
   transform: translate(-50%,-50%) scale(1);
 }
 /*FIN REJOUEZ */
