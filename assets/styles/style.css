@@ -23,6 +23,9 @@ body {
   font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
   overflow: hidden;
 }
+.disclaimeroff{
+  display: none;
+}
 
 /* MENU EXPLICATION */
 .button{
@@ -376,6 +379,17 @@ body {
   .img #example{
     width: 60vw;
   }
+  .button{
+    bottom: 0;
+    right: 0;
+    }
+    .button .aide button:before{
+      content:"?";
+    }
+    .button .aide button{
+      content:none;
+    }
+
 }
 
 @media screen and (max-width: 410px){
@@ -384,16 +398,6 @@ body {
   }
   .title p span.rayan,.by{
     display: none;
-  }
-  .button{
-  bottom: 0;
-  right: 0;
-  }
-  .button .aide button:before{
-    content:"?";
-  }
-  .button .aide button{
-    content:none;
   }
   img{
     width: 50px;
@@ -433,7 +437,4 @@ body {
   #explication div img{
     width:50px;
   }
-}
-.disclaimeroff{
-  display: none;
 }

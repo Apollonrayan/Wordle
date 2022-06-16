@@ -7945,11 +7945,13 @@ const targetWord = targetWords[getRandomInt(1900)]
 console.log(targetWord)
 
 function disclaimerOff() {
+    showAlert("Attention la page à des sons ! Vous pouvez les désactiver !", 5000)
     var element = document.getElementsByClassName("disclaimer")[0];
     element.classList.toggle("disclaimeroff");
 }
 
 // MUTE PAGE
+
 
 
 mutePages.addEventListener("click", () => {
@@ -8291,19 +8293,22 @@ function checkWinLose(guess, tiles) {
     if (guess === targetWord) {
         if(usedRows === 1){
             soundEffectWinInOne()
+            showAlert3("Le mot est bien " + targetWord.toUpperCase() +".",5000)
+            showAlert3("En 1 coup ??? Incroyable ✨🥶",5000)
+            danceTiles(tiles)
+            stopInteraction()
             return
         }
-        const compliments = ["En 1 coup ??? Incroyable ✨🥶", "Wow ! en 2 essais, bravo 🙌", "Magnifique !✨", "Superbe !🔥", "Bravo !🤩", "Bien joué ! c'était votre dernière chance 😅"]
+        const compliments = [" ", "Wow ! en 2 essais, bravo 🙌", "Magnifique !✨", "Superbe !🔥", "Bravo !🤩", "Bien joué ! c'était votre dernière chance 😅"]
         showAlert3(compliments[usedRows - 1], 5000)
-        showAlert3("Bravo vous avez gagner !", 5000)
+        showAlert3("Bravo vous avez gagner ! le mot est bien " + targetWord.toUpperCase() +".", 5000)
         danceTiles(tiles)
         stopInteraction()
         return
     }
     if (remainingTiles.length === 0){
         soundEffectLose()
-        showAlert2(targetWord.toUpperCase(),10000)
-        showAlert2("Dommage le mot était ",10000)
+        showAlert2("Dommage le mot était " + targetWord.toUpperCase(),10000)
         stopInteraction()
     }
 }
