@@ -25,6 +25,7 @@
 /* FIN ANIMATION */
 
 body {
+  touch-action: manipulation;
   font-family: Arial, Helvetica, sans-serif;
   background: rgb(50,50,50);
   background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(0,0,0,1) 100%);
@@ -422,8 +423,8 @@ a{
       content:none;
     }
     .keyboard {
-      grid-template-columns: repeat(20, minmax(auto, 100px));
-      grid-auto-rows: 70px;
+      grid-template-columns: repeat(20, (auto));
+      grid-auto-rows: 50px; 
     }
 }
 
