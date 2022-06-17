@@ -144,26 +144,27 @@ body {
 }
 /* FIN MENU EXPLICATION  */
 /*REJOUEZ */
-
+a{
+  text-decoration: none;
+}
 .replay{
-  position: fixed;
-  left: 70%;
-  top: 40%;
   background-color: antiquewhite;
+  position: fixed;
+  top: 50%;
+  right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
   border-radius: 3rem;
-  transform: translate(-50%,-50%) scale(0);
-}
-.replay{
-  text-decoration: none;
-  color: red;
+  padding: 2rem;
+  font-size: 1em;
+  text-decoration:none;
+  color: var(--red);
   font-weight: bolder;
+  display: none; 
 }
 .replay.active{
-  transform: translate(-50%,-50%) scale(1);
+  display: flex;
 }
 /*FIN REJOUEZ */
 .title{
@@ -410,7 +411,6 @@ body {
     .button .aide button{
       content:none;
     }
-
 }
 
 @media screen and (max-width: 410px){
@@ -435,6 +435,16 @@ body {
   #f5{
     color: green;
   }
+  .replay{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: unset;
+    display: none;
+  }
+
 
 }
 @media screen and (max-width: 310px){
