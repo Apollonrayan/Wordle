@@ -421,6 +421,10 @@ a{
     .button .aide button{
       content:none;
     }
+    .keyboard {
+      grid-template-columns: repeat(20, minmax(auto, 100px));
+      grid-auto-rows: 70px;
+    }
 }
 
 @media screen and (max-width: 410px){
